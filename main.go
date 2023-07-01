@@ -19,3 +19,5 @@ func main() {
 	PagarBoleto(&contaDoDenis, 60)
 	fmt.Println(contaDoDenis)
 }
+
+//utilizei do "go mod init nome da referencia" para conseguir conectar as pastas
