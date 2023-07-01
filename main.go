@@ -1,18 +1,21 @@
 package main
 
 import (
-	"banco/BankSimulationGolang/contas"
+	"banco/contas"
 	"fmt"
 )
 
+func PagarBoleto(conta verificarConta, ValorDoBoleto float64) {
+	conta.Sacar(ValorDoBoleto)
+}
+
+type verificarConta interface {
+	Sacar(valor float64) string
+}
+
 func main() {
-	contaDoPedro := contas.ContaCorrente{Titular: "Pedro", Saldo: 400}
-	contaDaAna := contas.ContaCorrente{Titular: "Ana", Saldo: 600}
-
-	status := contaDoPedro.Transferir(300, &contaDaAna)
-
-	fmt.Println(status)
-
-	fmt.Println(contaDoPedro)
-	fmt.Println(contaDaAna)
+	contaDoDenis := contas.ContaPoupanca{}
+	contaDoDenis.Depositar(1000)
+	PagarBoleto(&contaDoDenis, 60)
+	fmt.Println(contaDoDenis)
 }
